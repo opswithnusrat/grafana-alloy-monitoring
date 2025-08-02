@@ -1,8 +1,6 @@
 
-````markdown
+```markdown
 # 📈 Monitoring Stack with Prometheus, Grafana-Alloy, Grafana Mimir & Loki
-
-
 
 [![Helm Charts](https://img.shields.io/badge/Helm-Charts-blue.svg?logo=helm)](https://github.com/prometheus-community/helm-charts)
 [![Prometheus](https://img.shields.io/badge/Prometheus-Monitoring-orange.svg?logo=prometheus)](https://prometheus.io/)
@@ -11,7 +9,8 @@
 [![Alloy](https://img.shields.io/badge/Grafana%20Alloy-Agent-lightgrey.svg?logo=grafana)](https://grafana.com/docs/alloy)
 
 > Helm chart source: [prometheus-community/helm-charts](https://github.com/prometheus-community/helm-charts)
-````
+```
+---
 ![Three Tier Architecture](images/mimir.webp)
 ---
 
