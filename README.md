@@ -1,5 +1,5 @@
 
-```markdown
+```bash
 # 📈 Monitoring Stack with Prometheus, Grafana-Alloy, Grafana Mimir & Loki
 
 [![Helm Charts](https://img.shields.io/badge/Helm-Charts-blue.svg?logo=helm)](https://github.com/prometheus-community/helm-charts)
