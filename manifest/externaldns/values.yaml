@@ -1,0 +1,11 @@
+provider: aws
+policy: upsert-only
+registry: txt
+txtOwnerId: external-dns
+domainFilters:
+  - ${domain_filter}
+aws:
+  region: us-east-1
+  zoneType: public
+  zoneIdFilters:
+    - ${zone_id}

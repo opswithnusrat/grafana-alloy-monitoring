@@ -1,0 +1,59 @@
+# Grafana Helm Chart Values
+adminPassword: admin123
+
+ingress:
+  enabled: true
+  ingressClassName: ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    acme.cert-manager.io/http01-edit-in-place: "true"
+    external-dns.alpha.kubernetes.io/hostname: grafana.example.com
+  hosts:
+    - host: grafana.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: grafana-tls
+      hosts:
+        - grafana.example.com
+
+persistence:
+  enabled: true
+  storageClassName: gp2
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Mimir
+        type: prometheus
+        access: proxy
+        url: http://mimir-gateway.mimir.svc.cluster.local:80/prometheus
+        isDefault: true
+        jsonData:
+          httpMethod: GET
+          timeInterval: 30s
+      - name: Loki
+        type: loki
+        access: proxy
+        url: http://loki.loki.svc.cluster.local:3100
+        jsonData:
+          maxLines: 1000
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+sidecar:
+  dashboards:
+    enabled: true
+  datasources:
+    enabled: true
